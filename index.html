@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Buenas Prácticas Digitales para Universitarios</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --green: #2E7D32;
+    --green-light: #4CAF50;
+    --green-pale: #E8F5E9;
+    --green-mid: #A5D6A7;
+    --dark: #1A1A1A;
+    --gray: #555;
+    --light: #F9F9F7;
+    --accent: #FF6B35;
+    --accent2: #FFC107;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── PORTADA ─────────────────────────────────── */
+  .cover {
+    background: var(--green);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .cover-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 24px;
+  }
+
+  .cover h1 span {
+    color: var(--accent2);
+  }
+
+  .cover-sub {
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0.85;
+    text-align: center;
+    max-width: 500px;
+    margin-bottom: 60px;
+  }
+
+  .cover-credits {
+    font-size: 12px;
+    opacity: 0.7;
+    text-align: center;
+    position: absolute;
+    bottom: 36px;
+  }
+
+  .cover-icons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 48px;
+    font-size: 36px;
+  }
+
+  /* ── SECTIONS ─────────────────────────────────── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 48px;
+    page-break-inside: avoid;
+  }
+
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green);
+    background: var(--green-pale);
+    padding: 4px 14px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .section h2 .accent { color: var(--green); }
+
+  .intro-box {
+    background: var(--green);
+    color: white;
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+  }
+
+  .intro-box p {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .intro-box strong { font-weight: 600; }
+
+  /* ── CARDS ─────────────────────────────────────── */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 28px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid #E8E8E6;
+    position: relative;
+  }
+
+  .card .card-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--dark);
+  }
+
+  .card p {
+    font-size: 13.5px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  .card.green {
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
+  }
+
+  .card.green h3, .card.green p { color: white; }
+
+  /* ── ALGORITHM EXPLAINER ──────────────────────── */
+  .algo-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 32px 0;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #E8E8E6;
+    overflow: hidden;
+  }
+
+  .algo-step {
+    flex: 1;
+    padding: 24px 20px;
+    text-align: center;
+    border-right: 1px solid #E8E8E6;
+    position: relative;
+  }
+
+  .algo-step:last-child { border-right: none; }
+
+  .algo-step .num {
+    display: inline-block;
+    width: 32px; height: 32px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 32px;
+    margin-bottom: 10px;
+  }
+
+  .algo-step p {
+    font-size: 12.5px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .algo-step strong {
+    display: block;
+    font-size: 13px;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  /* ── STATS STRIP ────────────────────────────────── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .stat {
+    background: var(--green-pale);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .stat .big {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat p {
+    font-size: 12.5px;
+    color: var(--gray);
+  }
+
+  /* ── TIPS LIST ──────────────────────────────────── */
+  .tips-list {
+    list-style: none;
+    margin: 24px 0;
+  }
+
+  .tips-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #E8E8E6;
+  }
+
+  .tips-list li .tip-num {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .tips-list li .tip-text strong {
+    display: block;
+    font-size: 14px;
+    color: var(--dark);
+    margin-bottom: 3px;
+  }
+
+  .tips-list li .tip-text span {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  /* ── FOOTPRINT ───────────────────────────────────── */
+  .footprint-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .fp-item {
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #E8E8E6;
+  }
+
+  .fp-item.danger {
+    border-left: 4px solid var(--accent);
+  }
+
+  .fp-item.safe {
+    border-left: 4px solid var(--green-light);
+  }
+
+  .fp-item .fp-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .danger .fp-tag { color: var(--accent); }
+  .safe .fp-tag { color: var(--green); }
+
+  .fp-item p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  /* ── FAKE NEWS ───────────────────────────────────── */
+  .checklist {
+    margin: 24px 0;
+  }
+
+  .check-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #EBEBEB;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .check-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--dark);
+    margin-bottom: 3px;
+  }
+
+  .check-item p {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  /* ── MENTAL HEALTH ───────────────────────────────── */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .signal {
+    background: white;
+    border: 1px solid #E8E8E6;
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .signal .icon { font-size: 28px; margin-bottom: 10px; }
+
+  .signal p {
+    font-size: 12.5px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ─────────────────────────────────────── */
+  .divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--green) 0%, var(--green-mid) 60%, transparent 100%);
+    border-radius: 2px;
+    margin: 48px 0;
+  }
+
+  /* ── PAGE BREAK ─────────────────────────────────── */
+  .pb { page-break-before: always; padding-top: 60px; }
+
+  /* ── FOOTER BANNER ───────────────────────────────── */
+  .footer-banner {
+    background: var(--dark);
+    color: white;
+    padding: 48px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .footer-banner h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .footer-banner p {
+    font-size: 14px;
+    opacity: 0.75;
+    max-width: 500px;
+    margin: 0 auto 24px;
+  }
+
+  .footer-banner .tag-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-banner .tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .credits {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  @media print {
+    .cover { page-break-after: always; min-height: 100vh; }
+    .pb { page-break-before: always; }
+    body { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ PORTADA ═══════════════ -->
+<div class="cover">
+  <div class="cover-tag">Guía Estudiantil · Areandina 2026</div>
+  <div class="cover-icons">📱 🧠 🌐 🔍 ✅</div>
+  <h1>Buenas <span>Prácticas</span> Digitales para Universitarios</h1>
+  <p class="cover-sub">Una guía para navegar las redes sociales con conciencia, criterio y autonomía</p>
+  <div class="cover-credits">
+    Elaborada por: Juan David Figueroa · Geyber Angulo · Jesus David González · Yenci Yurani Valencia · Juan David Garzón<br>
+    Cátedra Pablo Oliveros Marmolejo — Fundación Universitaria del Área Andina · 2026
+  </div>
+</div>
+
+<!-- ═══════════════ PÁGINA 1 ═══════════════ -->
+<div class="page">
+
+  <!-- ¿Por qué esta guía? -->
+  <div class="section">
+    <div class="section-label">Punto de partida</div>
+    <h2>¿Por qué necesitas <span class="accent">esta guía</span>?</h2>
+
+    <div class="intro-box">
+      <p>Revisas el celular sin darte cuenta. Pasas horas en TikTok cuando ibas a estudiar "solo 5 minutos". Sientes ansiedad si no tienes señal. <strong>No es tu culpa: las plataformas fueron diseñadas exactamente para eso.</strong> Esta guía no te pide que dejes las redes, te invita a usarlas con inteligencia.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="big">+9h</div>
+        <p>Tiempo promedio diario que los colombianos pasan conectados a internet (We Are Social, 2024)</p>
+      </div>
+      <div class="stat">
+        <div class="big">18–25</div>
+        <p>Rango de edad más activo en redes sociales, coincide exactamente con la etapa universitaria</p>
+      </div>
+      <div class="stat">
+        <div class="big">3 ODS</div>
+        <p>El uso problemático de redes afecta directamente los ODS 3 (salud), 4 (educación) y 10 (desigualdad)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Cómo funcionan los algoritmos -->
+  <div class="section">
+    <div class="section-label">Tema 1 · Entiende el sistema</div>
+    <h2>¿Cómo te <span class="accent">enganchan</span> los algoritmos?</h2>
+    <p style="color:var(--gray); margin-bottom: 24px;">Un algoritmo no es magia: es un sistema diseñado para predecir qué contenido te mantendrá más tiempo en la pantalla. Así funciona:</p>
+
+    <div class="algo-flow">
+      <div class="algo-step">
+        <div class="num">1</div>
+        <strong>Te observa</strong>
+        <p>Registra qué ves, cuánto tiempo, qué pausas, qué repites y qué ignoras.</p>
+      </div>
+      <div class="algo-step">
+        <div class="num">2</div>
+        <strong>Aprende tu perfil</strong>
+        <p>Construye un modelo de tus emociones, preferencias e inseguridades.</p>
+      </div>
+      <div class="algo-step">
+        <div class="num">3</div>
+        <strong>Te da más de lo mismo</strong>
+        <p>Te muestra contenido que genera reacción emocional fuerte: rabia, envidia, risa, miedo.</p>
+      </div>
+      <div class="algo-step">
+        <div class="num">4</div>
+        <strong>Ciclo sin fin</strong>
+        <p>Cada reacción tuya alimenta el sistema. El objetivo: tiempo, no bienestar.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">⚡</span>
+        <h3>Recompensa variable</h3>
+        <p>Los likes, comentarios y nuevas notificaciones funcionan como las máquinas tragamonedas: no sabes cuándo llega la recompensa, y eso genera dependencia real.</p>
+      </div>
+      <div class="card green">
+        <span class="card-icon">🎯</span>
+        <h3>Tu defensa</h3>
+        <p>Saber cómo funciona el sistema es el primer paso para no ser controlado por él. La conciencia no te saca de las redes, pero sí te devuelve el control.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ PÁGINA 2 ═══════════════ -->
+<div class="page pb">
+
+  <!-- Salud mental -->
+  <div class="section">
+    <div class="section-label">Tema 2 · Tu bienestar primero</div>
+    <h2>Redes sociales y <span class="accent">salud mental</span></h2>
+    <p style="color:var(--gray); margin-bottom: 24px;">El uso excesivo no genera problemas de la noche a la mañana, pero sí deja señales. Reconocerlas es fundamental.</p>
+
+    <div class="signal-grid">
+      <div class="signal">
+        <div class="icon">😴</div>
+        <p>Revisas el celular antes de dormir y al despertar, y sientes que "perdiste" algo si no lo haces</p>
+      </div>
+      <div class="signal">
+        <div class="icon">😔</div>
+        <p>Comparas tu vida real con lo que ves en redes y te sientes menos que los demás</p>
+      </div>
+      <div class="signal">
+        <div class="icon">😰</div>
+        <p>Sientes ansiedad o incomodidad cuando no tienes acceso a tu celular o internet (nomofobia)</p>
+      </div>
+      <div class="signal">
+        <div class="icon">🎓</div>
+        <p>Pospones tareas y estudios para consumir contenido digital, y luego te sientes culpable</p>
+      </div>
+      <div class="signal">
+        <div class="icon">👥</div>
+        <p>Prefieres interactuar en redes antes que en persona, incluso estando con amigos presentes</p>
+      </div>
+      <div class="signal">
+        <div class="icon">⏱️</div>
+        <p>Entras a una red social "un momento" y sin darte cuenta han pasado una o dos horas</p>
+      </div>
+    </div>
+
+    <div class="intro-box" style="margin-top: 24px; background: var(--green-pale); color: var(--dark);">
+      <p><strong style="color:var(--green);">¿Reconoces alguna de estas señales?</strong> No significa que estés "mal": significa que el sistema funcionó exactamente como fue diseñado. Lo importante es decidir conscientemente qué relación quieres tener con la tecnología.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Tips de autocuidado -->
+  <div class="section">
+    <div class="section-label">Tema 3 · Toma el control</div>
+    <h2>7 hábitos de <span class="accent">autocuidado digital</span></h2>
+
+    <ul class="tips-list">
+      <li>
+        <div class="tip-num">1</div>
+        <div class="tip-text">
+          <strong>Establece tiempos límite reales</strong>
+          <span>Usa los controles de tiempo de pantalla de tu celular (Tiempo en Pantalla en iOS, Bienestar Digital en Android). Ponlos con restricción de contraseña para que la intención sea real.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tip-num">2</div>
+        <div class="tip-text">
+          <strong>Crea zonas libres de pantalla</strong>
+          <span>La cama, la mesa familiar y las primeras dos horas del día son momentos poderosos para recuperar. Prueba una semana sin redes en esos espacios.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tip-num">3</div>
+        <div class="tip-text">
+          <strong>Desactiva las notificaciones no urgentes</strong>
+          <span>Las notificaciones están diseñadas para interrumpirte. Solo deja activas las que requieren respuesta inmediata real (llamadas, mensajes de familia).</span>
+        </div>
+      </li>
+      <li>
+        <div class="tip-num">4</div>
+        <div class="tip-text">
+          <strong>Haz "dietas digitales" periódicas</strong>
+          <span>Un día sin redes sociales a la semana (no sin internet en general) te permitirá notar qué tanto controlaban tu tiempo y tu estado de ánimo.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tip-num">5</div>
+        <div class="tip-text">
+          <strong>Sigue cuentas que construyan, no que drenen</strong>
+          <span>Audita tu feed: ¿qué cuentas te dejan energía después de verlas? ¿Cuáles te generan envidia o ansiedad? Sigue más de las primeras, deja de seguir las segundas.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tip-num">6</div>
+        <div class="tip-text">
+          <strong>Sustituye, no suprimas</strong>
+          <span>Si usas redes para calmar aburrimiento o ansiedad, busca un sustituto: caminar, escuchar música, leer, cocinar. La supresión sin alternativa raramente funciona.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tip-num">7</div>
+        <div class="tip-text">
+          <strong>Habla de esto con alguien</strong>
+          <span>Si sientes que el uso de redes afecta tu bienestar de forma importante, hablar con bienestar universitario o un profesional de salud mental no es exagerado: es inteligente.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ═══════════════ PÁGINA 3 ═══════════════ -->
+<div class="page pb">
+
+  <!-- Huella digital -->
+  <div class="section">
+    <div class="section-label">Tema 4 · Lo que dejas atrás</div>
+    <h2>Tu <span class="accent">huella digital</span>: más permanente de lo que crees</h2>
+    <p style="color:var(--gray); margin-bottom: 24px;">Todo lo que publicas, comentas, compartes o "likeas" queda registrado. Tu huella digital puede afectarte ahora o en cinco años. Aquí la diferencia entre lo que protege y lo que puede perjudicarte:</p>
+
+    <div class="footprint-grid">
+      <div class="fp-item danger">
+        <div class="fp-tag">⚠ Piénsalo dos veces</div>
+        <p>Fotos en contextos comprometedores, aunque borres el post, ya pudo ser capturado. Comentarios agresivos o discriminatorios, aunque sean en "tono de broma". Datos de ubicación en tiempo real (avisar que tu casa está sola). Publicar información de terceros sin su consentimiento. Compartir documentos de identidad o información bancaria.</p>
+      </div>
+      <div class="fp-item safe">
+        <div class="fp-tag">✅ Construye tu imagen</div>
+        <p>Compartir proyectos académicos y logros personales. Participar en debates de forma respetuosa y fundamentada. Crear contenido original que refleje tus valores e intereses. Seguir y visibilizar causas sociales que te importen genuinamente. Usar LinkedIn de forma cuidada para tu desarrollo profesional.</p>
+      </div>
+      <div class="fp-item danger">
+        <div class="fp-tag">⚠ Privacidad en riesgo</div>
+        <p>Tener todas las cuentas en público sin saberlo. Usar la misma contraseña en todas las plataformas. Aceptar solicitudes de personas desconocidas sin filtrar. Conectarte a redes WiFi públicas sin VPN para acceder a cuentas.</p>
+      </div>
+      <div class="fp-item safe">
+        <div class="fp-tag">✅ Protege tu información</div>
+        <p>Revisar la configuración de privacidad cada 3 meses. Usar contraseñas únicas y un gestor de contraseñas. Activar la verificación en dos pasos. Leer (al menos por encima) los términos de privacidad de las apps que usas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Desinformación -->
+  <div class="section">
+    <div class="section-label">Tema 5 · Piensa antes de compartir</div>
+    <h2>Cómo detectar <span class="accent">desinformación</span></h2>
+    <p style="color:var(--gray); margin-bottom: 20px;">El contenido falso se diseña para provocar reacciones emocionales fuertes. Antes de compartir cualquier noticia o dato, aplica este checklist mental:</p>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-icon">🔍</div>
+        <div>
+          <strong>¿Puedes verificar la fuente?</strong>
+          <p>Busca el medio o la persona que originó la información. Si no hay autor identificable o el medio es desconocido, es una señal de alerta. Los medios serios tienen historial verificable.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">📅</div>
+        <div>
+          <strong>¿Cuándo fue publicado?</strong>
+          <p>Las noticias viejas circulan constantemente como si fueran recientes. Revisa la fecha del artículo original antes de compartirlo; el contexto puede haber cambiado completamente.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">🎭</div>
+        <div>
+          <strong>¿Te genera una emoción muy intensa?</strong>
+          <p>Si un contenido te genera rabia, miedo o indignación inmediata, detente. Las emociones fuertes reducen el pensamiento crítico. Ese efecto a veces es intencional.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">🔗</div>
+        <div>
+          <strong>¿Otros medios lo reportan también?</strong>
+          <p>Si una noticia importante solo aparece en un lugar y los grandes medios no la cubren, desconfía. Busca en Google Noticias el mismo tema con términos distintos.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">🖼️</div>
+        <div>
+          <strong>¿Las imágenes son reales y del contexto correcto?</strong>
+          <p>Usa Google Imágenes (clic derecho → "Buscar imagen") para verificar si una foto fue tomada en otro contexto o en otro país. Muchas imágenes virales son reales pero corresponden a eventos distintos.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">💬</div>
+        <div>
+          <strong>¿El titular corresponde al contenido?</strong>
+          <p>Lee más allá del titular. Muchos contenidos engañosos tienen un título sensacionalista que no refleja lo que dice el artículo. Si solo compartes el titular, puedes estar desinformando sin querer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ CIERRE ═══════════════ -->
+<div class="page pb">
+  <div class="footer-banner">
+    <h3>La tecnología eres tú quien la usa. No al revés.</h3>
+    <p>Esta guía es un punto de partida, no un manual definitivo. El objetivo es simple: que tengas más herramientas para tomar decisiones conscientes en tu vida digital.</p>
+    <div class="tag-row">
+      <span class="tag">🌱 Humanismo Digital</span>
+      <span class="tag">💡 Pensamiento crítico</span>
+      <span class="tag">🤝 Bienestar universitario</span>
+      <span class="tag">📚 Areandina 2026</span>
+    </div>
+  </div>
+
+  <div class="cards" style="margin-top: 32px;">
+    <div class="card">
+      <span class="card-icon">📌</span>
+      <h3>Recuerda siempre</h3>
+      <p>No eres el problema. El problema es la ausencia de herramientas para navegar un entorno diseñado para capturar tu atención. Ahora que las tienes, úsalas.</p>
+    </div>
+    <div class="card green">
+      <span class="card-icon">🚀</span>
+      <h3>Comparte esta guía</h3>
+      <p>Si algo de lo que leíste te fue útil, compártelo con un compañero. El bienestar digital es un asunto colectivo, no solo personal.</p>
+    </div>
+  </div>
+
+  <div class="credits">
+    <strong>Guía de Buenas Prácticas Digitales para Universitarios</strong><br>
+    Cátedra Pablo Oliveros Marmolejo — Fundación Universitaria del Área Andina<br>
+    Juan David Figueroa · Geyber Angulo · Jesus David González · Yenci Yurani Valencia · Juan David Garzón · 2026<br><br>
+    Fuentes: We Are Social &amp; Meltwater, Digital 2024: Colombia · ONU, Agenda 2030 · APA, Social Media and Mental Health, 2023
+  </div>
+</div>
+
+</body>
+</html>
