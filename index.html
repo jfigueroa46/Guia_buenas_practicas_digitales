@@ -85,9 +85,7 @@
     margin-bottom: 24px;
   }
 
-  .cover h1 span {
-    color: var(--accent2);
-  }
+  .cover h1 span { color: var(--accent2); }
 
   .cover-sub {
     font-size: 16px;
@@ -121,9 +119,7 @@
     page-break-inside: avoid;
   }
 
-  .section {
-    margin-bottom: 72px;
-  }
+  .section { margin-bottom: 72px; }
 
   .section-label {
     display: inline-block;
@@ -243,11 +239,7 @@
     margin-bottom: 10px;
   }
 
-  .algo-step p {
-    font-size: 12.5px;
-    color: var(--gray);
-    line-height: 1.5;
-  }
+  .algo-step p { font-size: 12.5px; color: var(--gray); line-height: 1.5; }
 
   .algo-step strong {
     display: block;
@@ -280,16 +272,10 @@
     margin-bottom: 6px;
   }
 
-  .stat p {
-    font-size: 12.5px;
-    color: var(--gray);
-  }
+  .stat p { font-size: 12.5px; color: var(--gray); }
 
   /* ── TIPS LIST ──────────────────────────────────── */
-  .tips-list {
-    list-style: none;
-    margin: 24px 0;
-  }
+  .tips-list { list-style: none; margin: 24px 0; }
 
   .tips-list li {
     display: flex;
@@ -323,10 +309,7 @@
     margin-bottom: 3px;
   }
 
-  .tips-list li .tip-text span {
-    font-size: 13px;
-    color: var(--gray);
-  }
+  .tips-list li .tip-text span { font-size: 13px; color: var(--gray); }
 
   /* ── FOOTPRINT ───────────────────────────────────── */
   .footprint-grid {
@@ -343,13 +326,8 @@
     border: 1px solid #E8E8E6;
   }
 
-  .fp-item.danger {
-    border-left: 4px solid var(--accent);
-  }
-
-  .fp-item.safe {
-    border-left: 4px solid var(--green-light);
-  }
+  .fp-item.danger { border-left: 4px solid var(--accent); }
+  .fp-item.safe { border-left: 4px solid var(--green-light); }
 
   .fp-item .fp-tag {
     font-size: 10px;
@@ -361,17 +339,10 @@
 
   .danger .fp-tag { color: var(--accent); }
   .safe .fp-tag { color: var(--green); }
-
-  .fp-item p {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.55;
-  }
+  .fp-item p { font-size: 13px; color: var(--gray); line-height: 1.55; }
 
   /* ── FAKE NEWS ───────────────────────────────────── */
-  .checklist {
-    margin: 24px 0;
-  }
+  .checklist { margin: 24px 0; }
 
   .check-item {
     display: flex;
@@ -382,11 +353,7 @@
   }
 
   .check-item:last-child { border-bottom: none; }
-
-  .check-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
+  .check-icon { font-size: 20px; flex-shrink: 0; }
 
   .check-item strong {
     display: block;
@@ -395,10 +362,7 @@
     margin-bottom: 3px;
   }
 
-  .check-item p {
-    font-size: 13px;
-    color: var(--gray);
-  }
+  .check-item p { font-size: 13px; color: var(--gray); }
 
   /* ── MENTAL HEALTH ───────────────────────────────── */
   .signal-grid {
@@ -417,12 +381,7 @@
   }
 
   .signal .icon { font-size: 28px; margin-bottom: 10px; }
-
-  .signal p {
-    font-size: 12.5px;
-    color: var(--gray);
-    line-height: 1.5;
-  }
+  .signal p { font-size: 12.5px; color: var(--gray); line-height: 1.5; }
 
   /* ── DIVIDER ─────────────────────────────────────── */
   .divider {
@@ -487,6 +446,184 @@
     .pb { page-break-before: always; }
     body { font-size: 14px; }
   }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE MÓVIL — solo aplica en pantallas ≤ 600px
+     En PC todo queda exactamente igual que antes
+  ═══════════════════════════════════════════════════ */
+  @media (max-width: 600px) {
+
+    /* Portada */
+    .cover {
+      padding: 60px 24px 80px;
+      min-height: 100svh;
+    }
+
+    .cover h1 {
+      font-size: 32px;
+    }
+
+    .cover-sub {
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    .cover-tag {
+      font-size: 9px;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+
+    .cover-icons {
+      font-size: 26px;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .cover-credits {
+      font-size: 10px;
+      padding: 0 20px;
+      bottom: 20px;
+    }
+
+    /* Páginas internas */
+    .page {
+      padding: 36px 20px;
+    }
+
+    .pb {
+      padding-top: 36px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+    }
+
+    /* Intro box */
+    .intro-box {
+      padding: 24px 20px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+    }
+
+    .intro-box p {
+      font-size: 15px;
+    }
+
+    /* Stats: una columna */
+    .stats {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .stat .big {
+      font-size: 36px;
+    }
+
+    /* Algoritmo: columna vertical */
+    .algo-flow {
+      flex-direction: column;
+    }
+
+    .algo-step {
+      border-right: none;
+      border-bottom: 1px solid #E8E8E6;
+      padding: 18px 16px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .algo-step:last-child { border-bottom: none; }
+
+    .algo-step .num {
+      flex-shrink: 0;
+      margin-bottom: 0;
+      margin-top: 2px;
+    }
+
+    .algo-step strong { font-size: 14px; }
+    .algo-step p { font-size: 13px; }
+
+    /* Cards: una columna */
+    .cards {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      padding: 22px 18px;
+    }
+
+    /* Señales: 2 columnas en móvil (más legible que 3) */
+    .signal-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .signal {
+      padding: 16px 10px;
+    }
+
+    .signal .icon { font-size: 22px; }
+    .signal p { font-size: 11.5px; }
+
+    /* Huella digital: una columna */
+    .footprint-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* Tips: ajuste de tamaño */
+    .tips-list li {
+      padding: 14px 14px;
+      gap: 12px;
+    }
+
+    .tips-list li .tip-text strong { font-size: 13px; }
+    .tips-list li .tip-text span { font-size: 12px; }
+
+    /* Checklist */
+    .check-item { gap: 10px; padding: 14px 0; }
+    .check-icon { font-size: 18px; }
+    .check-item strong { font-size: 13px; }
+    .check-item p { font-size: 12px; }
+
+    /* Footer banner */
+    .footer-banner {
+      padding: 32px 20px;
+      border-radius: 14px;
+      margin: 24px 0;
+    }
+
+    .footer-banner h3 {
+      font-size: 20px;
+    }
+
+    .footer-banner p {
+      font-size: 13px;
+    }
+
+    .footer-banner .tag {
+      font-size: 11px;
+      padding: 5px 12px;
+    }
+
+    /* Divider */
+    .divider { margin: 32px 0; }
+
+    /* Créditos */
+    .credits {
+      font-size: 11px;
+      margin-top: 32px;
+      padding-bottom: 28px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -506,7 +643,6 @@
 <!-- ═══════════════ PÁGINA 1 ═══════════════ -->
 <div class="page">
 
-  <!-- ¿Por qué esta guía? -->
   <div class="section">
     <div class="section-label">Punto de partida</div>
     <h2>¿Por qué necesitas <span class="accent">esta guía</span>?</h2>
@@ -515,7 +651,6 @@
       <p>Revisas el celular sin darte cuenta. Pasas horas en TikTok cuando ibas a estudiar "solo 5 minutos". Sientes ansiedad si no tienes señal. <strong>No es tu culpa: las plataformas fueron diseñadas exactamente para eso.</strong> Esta guía no te pide que dejes las redes, te invita a usarlas con inteligencia.</p>
     </div>
 
-    <!-- Stats -->
     <div class="stats">
       <div class="stat">
         <div class="big">+9h</div>
@@ -534,7 +669,6 @@
 
   <div class="divider"></div>
 
-  <!-- Cómo funcionan los algoritmos -->
   <div class="section">
     <div class="section-label">Tema 1 · Entiende el sistema</div>
     <h2>¿Cómo te <span class="accent">enganchan</span> los algoritmos?</h2>
@@ -582,7 +716,6 @@
 <!-- ═══════════════ PÁGINA 2 ═══════════════ -->
 <div class="page pb">
 
-  <!-- Salud mental -->
   <div class="section">
     <div class="section-label">Tema 2 · Tu bienestar primero</div>
     <h2>Redes sociales y <span class="accent">salud mental</span></h2>
@@ -622,7 +755,6 @@
 
   <div class="divider"></div>
 
-  <!-- Tips de autocuidado -->
   <div class="section">
     <div class="section-label">Tema 3 · Toma el control</div>
     <h2>7 hábitos de <span class="accent">autocuidado digital</span></h2>
@@ -685,7 +817,6 @@
 <!-- ═══════════════ PÁGINA 3 ═══════════════ -->
 <div class="page pb">
 
-  <!-- Huella digital -->
   <div class="section">
     <div class="section-label">Tema 4 · Lo que dejas atrás</div>
     <h2>Tu <span class="accent">huella digital</span>: más permanente de lo que crees</h2>
@@ -713,7 +844,6 @@
 
   <div class="divider"></div>
 
-  <!-- Desinformación -->
   <div class="section">
     <div class="section-label">Tema 5 · Piensa antes de compartir</div>
     <h2>Cómo detectar <span class="accent">desinformación</span></h2>
